@@ -125,7 +125,7 @@ public class PracticeProblemTest {
             Class<?> rectangleClass = Class.forName("Rectangle");
             Method method = rectangleClass.getDeclaredMethod("area");
             Object rectangle = createRectangle(5, 4);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
+            assertEquals(20.0, (double)method.invoke(rectangle), 0.01);
         } catch (ClassNotFoundException e) {
             fail("Rectangle class does not exist");
         } catch (NoSuchMethodException e) {
@@ -141,8 +141,8 @@ public class PracticeProblemTest {
         try {
             Class<?> rectangleClass = Class.forName("Rectangle");
             Method method = rectangleClass.getDeclaredMethod("area");
-            Object rectangle = createRectangle(5, 0);
-            assertEquals(5.2, (double)method.invoke(rectangle), 0.01);
+            Object rectangle = createRectangle(5.2, 0);
+            assertEquals(0.0, (double)method.invoke(rectangle), 0.01);
         } catch (ClassNotFoundException e) {
             fail("Rectangle class does not exist");
         } catch (NoSuchMethodException e) {
@@ -159,7 +159,7 @@ public class PracticeProblemTest {
             Class<?> rectangleClass = Class.forName("Rectangle");
             Method method = rectangleClass.getDeclaredMethod("perimeter");
             Object rectangle = createRectangle(5, 4);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
+            assertEquals(18.0, (double)method.invoke(rectangle), 0.01);
         } catch (ClassNotFoundException e) {
             fail("Rectangle class does not exist");
         } catch (NoSuchMethodException e) {
@@ -175,8 +175,8 @@ public class PracticeProblemTest {
         try {
             Class<?> rectangleClass = Class.forName("Rectangle");
             Method method = rectangleClass.getDeclaredMethod("perimeter");
-            Object rectangle = createRectangle(5, 0);
-            assertEquals(5.2, (double)method.invoke(rectangle), 0.01);
+            Object rectangle = createRectangle(5.0, 0);
+            assertEquals(0.0, (double)method.invoke(rectangle), 0.01);
         } catch (ClassNotFoundException e) {
             fail("Rectangle class does not exist");
         } catch (NoSuchMethodException e) {
