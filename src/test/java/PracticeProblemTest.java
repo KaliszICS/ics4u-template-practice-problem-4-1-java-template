@@ -1,49 +1,26 @@
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 import java.io.*;
 
 public class PracticeProblemTest {
+    @Test
+    @DisplayName("Test getLength method")
+    void getLengthTest() {
+        try {
+            Class<?> rectangleClass = Class.forName("Rectangle");
+            Method method = rectangleClass.getDeclaredMethod("getLength");
+            Object rectangle = createRectangle(5, 3);
+            assertEquals(5.0, (double)method.invoke(rectangle));
+        } catch (ClassNotFoundException e) {
+            fail("Rectangle class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("getLength method does not exist");
+        } catch (Exception e) {
+            fail("Something weird happened: " + e.getMessage());
+        }
+    }
 
-   @Test
-   public void testOutput()
-   {
-     PrintStream originalOut = System.out;
-     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-     System.setOut(new PrintStream(bos));
 
-     // action
-     PracticeProblem.q1();
-
-     // assertion
-     assertEquals("There once was a man from St. Ives.\n", bos.toString());
-
-     // undo the binding in System
-     System.setOut(originalOut);
-   }
-
-   @Test
-   public void testInputandOutput()
-   {
-      String data = "Users Input";
-      System.setIn(new ByteArrayInputStream(data.getBytes()));
-      
-      PrintStream originalOut = System.out;
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-      System.setOut(new PrintStream(bos));
-
-      // action
-      PracticeProblem.q1();
-
-      // assertion
-      assertEquals("There once was a man from St. Ives.\n", bos.toString());
-
-      // undo the binding in System
-      System.setOut(originalOut);
-   }
-
-   @Test
-   public void testQ3()
-   {
-     
-   }
 }
